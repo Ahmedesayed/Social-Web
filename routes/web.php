@@ -15,6 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('/profileupdate',['uses'=>'profileController@submit','as'=>'profilecontroller']);
+Route::post('/profileupdate',['uses'=>'profileController@edit','as'=>'profilecontrolleredit']);
+
+
+Route::get('/profileview',function(){
+    return view('profile');
+} );
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
