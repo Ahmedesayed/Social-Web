@@ -18,6 +18,13 @@ Route::get('/', function () {
 Route::post('/profileupdate',['uses'=>'profileController@submit','as'=>'profilecontroller']);
 Route::post('/profileupdate',['uses'=>'profileController@edit','as'=>'profilecontrolleredit']);
 
+Route::get('/profileEdit',function(){
+    return view('profile_edit');
+} );
+
+Route::get('/profile',function(){
+    return view('profile_view');
+} );
 
 Route::get('/profileview',function(){
     return view('profile');

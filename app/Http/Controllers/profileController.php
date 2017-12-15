@@ -41,7 +41,7 @@ class profileController extends Controller
 
     public function edit(Request $request){
         $this->validate($request,[
-            'password'=>'required',
+            'password'=>'required|min:8',
             'gender'=>'not_in:Choose Gender',
             'mstatus'=>'not_in:Choose Your Relationship',
             ]);

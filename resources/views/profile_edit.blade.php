@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
-                            <label for="firstname" class="col-md-4 control-label">* First Name</label>
+                            <label for="firstname" class="col-md-4 control-label">First Name</label>
 
                             <div class="col-md-6">
                                 <input id="firstname" type="text" class="form-control" name="firstname" value="{{ old('firstname') }}"  autofocus>
@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
-                            <label for="lastname" class="col-md-4 control-label">* Last name</label>
+                            <label for="lastname" class="col-md-4 control-label">Last name</label>
 
                             <div class="col-md-6">
                                 <input id="lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}" >
@@ -68,13 +68,6 @@
                             </div>
                         </div>
 
-                          <div class="form-group">
-                            <label for="image" class="col-md-4 control-label">Image</label>
-
-                            <div class="col-md-6">
-                                <input id="image" type="file" class="form-control" name="image" value="{{ old('image') }}" >
-                            </div>
-                        </div>
 
                         <div class="form-group{{ $errors->has('phonenumber1') ? ' has-error' : '' }}">
                             <label for="phonenumber1" class="col-md-4 control-label">Phone Number 1</label>
@@ -90,8 +83,17 @@
                             </div>
                         </div>
 
+                          <div class="form-group">
+                            <label for="image" class="col-md-4 control-label">Image</label>
+
+                            <div class="col-md-6">
+                                <input id="image" type="file" class="form-control" name="image" value="{{ old('image') }}" >
+                            </div>
+                        </div>
+
+
                        <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
-                            <label for="gender" class="col-md-4 control-label">* Gender</label>
+                            <label for="gender" class="col-md-4 control-label">Gender</label>
                                 <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="gender" id="inlineFormCustomSelectPref">
                                     <option selected>Choose Gender</option>
                                     <option value="Male">Male</option>
@@ -106,7 +108,7 @@
                                 </div>
                             </div>
                       <div class="form-group{{ $errors->has('birthdate') ? ' has-error' : '' }}">
-                            <label for="bithdate" class="col-md-4 control-label">* BirthDate</label>
+                            <label for="bithdate" class="col-md-4 control-label">BirthDate</label>
 
                             <div class="col-md-6">
                                 <input id="birthdate" type="date" class="form-control" name="birthdate" value="{{ old('birthdate') }}"  >
