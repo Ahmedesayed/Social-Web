@@ -4,6 +4,7 @@
 <body style="background:url(img/header-bg.jpg)" >
     
 </body>
+{{--  edit profile page  --}}
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -17,7 +18,7 @@
                             <label for="username" class="col-md-4 control-label">Username</label>
 
                             <div class="col-md-6">
-                                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}"  autofocus>
+                                <input id="username" type="text" class="form-control" name="username" value="{{ Auth::user()->username }}"  autofocus>
 
                                 @if ($errors->has('username'))
                                     <span class="help-block">
@@ -26,11 +27,26 @@
                                 @endif
                             </div>
                         </div>
+
+                                  <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">Email</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ Auth::user()->email }}"  autofocus>
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
                             <label for="firstname" class="col-md-4 control-label">First Name</label>
 
                             <div class="col-md-6">
-                                <input id="firstname" type="text" class="form-control" name="firstname" value="{{ old('firstname') }}"  autofocus>
+                                <input id="firstname" type="text" class="form-control" name="firstname" value="{{ Auth::user()->first_name }}"  autofocus>
 
                                 @if ($errors->has('firstname'))
                                     <span class="help-block">
@@ -44,7 +60,7 @@
                             <label for="lastname" class="col-md-4 control-label">Last name</label>
 
                             <div class="col-md-6">
-                                <input id="lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}" >
+                                <input id="lastname" type="text" class="form-control" name="lastname" value="{{ Auth::user()->last_name }}" >
 
                                 @if ($errors->has('lastname'))
                                     <span class="help-block">
@@ -58,7 +74,7 @@
                             <label for="phonenumber" class="col-md-4 control-label">Phone Number</label>
 
                             <div class="col-md-6">
-                                <input id="phonenumber" type="number" class="form-control" name="phonenumber" value="{{ old('phonenumber') }}" >
+                                <input id="phonenumber" type="number" class="form-control" name="phonenumber" value="{{ Auth::user()->phone_number1}}" >
 
                                 @if ($errors->has('phonenumber'))
                                     <span class="help-block">
@@ -73,7 +89,7 @@
                             <label for="phonenumber1" class="col-md-4 control-label">Phone Number 1</label>
 
                             <div class="col-md-6">
-                                <input id="phonenumber1" type="number" class="form-control" name="phonenumber1" value="{{ old('phonenumber1') }}" >
+                                <input id="phonenumber1" type="number" class="form-control" name="phonenumber1" value="{{ Auth::user()->phone_number2}}" >
 
                                 @if ($errors->has('phonenumber1'))
                                     <span class="help-block">
@@ -111,7 +127,7 @@
                             <label for="bithdate" class="col-md-4 control-label">BirthDate</label>
 
                             <div class="col-md-6">
-                                <input id="birthdate" type="date" class="form-control" name="birthdate" value="{{ old('birthdate') }}"  >
+                                <input id="birthdate" type="date" class="form-control" name="birthdate" value="{{ Auth::user()->birthdate}}"  >
 
                                 @if ($errors->has('birthdate'))
                                     <span class="help-block">
@@ -123,7 +139,7 @@
                     <div class="form-group{{ $errors->has('hometown') ? ' has-error' : '' }}">
                             <label for="hometown" class="col-md-4 control-label">Home Town</label>
                         <div class="col-md-6">
-                                <input id="hometown" type="text" class="form-control" name="hometown" value="{{ old('hometown') }}" >
+                                <input id="hometown" type="text" class="form-control" name="hometown" value="{{ Auth::user()->hometown }}" >
 
                                 @if ($errors->has('hometown'))
                                     <span class="help-block">
@@ -135,7 +151,7 @@
 
                         <div class="form-group{{ $errors->has('mstatus') ? ' has-error' : '' }}">
                             <label for="mstatus" class="col-md-4 control-label">Marital Status</label>
-                                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="mstatus" id="inlineFormCustomSelectPref">
+                                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="mstatus" value="{{Auth::user()->martial_status}}" id="inlineFormCustomSelectPref">
                                     <option value="" selected>Choose Your relationship</option>
                                     <option value="Single">Single</option>
                                     <option value="Engaged">Engaged</option>
@@ -151,23 +167,15 @@
                      <div class="form-group{{ $errors->has('bio') ? ' has-error' : '' }}">
                             <label for="bio" class="col-md-4 control-label">Bio</label>
                             <div class="col-md-6">
-                                <textarea class="form-control" rows="3" name="bio" value="{{ old('bio') }}" id="bio"></textarea>
+                                <textarea class="form-control" rows="3" name="bio" value="{{ Auth::user()->bio }}" id="bio"></textarea>
                             </div>
                         </div>
-                       <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">* Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" value="{{ old('password') }}" required  autofocus>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                           <div class="col-md-6 col-md-offset-7">
+                        
+                      <a href="{{ url('/changepassword') }}"class="btn btn-primary">
+                            Change Password
+                      </a>
                         </div>
-
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

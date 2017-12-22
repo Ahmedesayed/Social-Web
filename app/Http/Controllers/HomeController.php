@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\posts;
+use App\User;
+use App\friends;
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
-    }
+        if(Auth::check()){
+            $user_id = Auth::user()->id;
+            $user = User::find($user_id);
+            $mine_posts = $user->posts;
+            $friends = $user->friends();
+          //  dd($friends);
+           
+            return view('home')->with('posts',$mine_posts);
+            }
+        }
+    
 }

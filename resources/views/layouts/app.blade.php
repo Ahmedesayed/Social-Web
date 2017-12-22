@@ -48,6 +48,16 @@
                     </a>
                     @endif
                 </div>
+                @if(Auth::user())
+                      <form action="{{route('search.results')}}" role="search" class="navbar-form navbar-left">
+                                <div class="form-group">
+                                        <input type="text" name="query" class="form-control"
+                                        placeholder="Find people"/>
+                                </div>
+                                <button type="submit" class="btn btn-default">Search</button>
+                        </form>
+                @endif
+              
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
