@@ -29,5 +29,27 @@ class postController extends Controller
     return redirect()->route('home')->with('info', 'Post added Succefully');
     
     }
+    public function getLike($postId){
+        
+        $posts = posts::find($postId);
+        $user= Auth::user();
+       
+        // if(!$posts){
+        //     return redirect()->route('home');
+        // }
+        // if(!Auth::user()->isFriendWith($posts->user)){
+        //     return redirect()->route('home');
+        // }
+        // if(Auth::user()->hasLikepost($posts)){
+            
+        //     return redirect()->back();
+        // }
+        
+        $like = $posts->likes->create([]);
+        bb($postId);
+        
+        Auth::user()->likes->save($like);
+        return redirect()->back();
+    }
 
 }

@@ -94,4 +94,11 @@ Route::get('/search', [
                                 'uses'=>'\App\Http\Controllers\FriendController@postDelete',
                                 'as'=> 'friends.delete',
                                 'middleware'=>['auth'], 
-                                ]);    
+                                ]);   
+                                
+                                
+                                Route::get('/posts/{postId}/like', [
+                                    'uses'=>'\App\Http\Controllers\postController@getlike',
+                                    'as'=> 'posts.like',
+                                    'middleware'=>['auth'], 
+                                    ]);

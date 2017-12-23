@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Hash;
 class profileController extends Controller
 {
 
-
+    public function getProfile($username){
+        return view('/home');
+    }
 
     public function submit(Request $request){
         $this->validate($request,[
@@ -46,7 +48,6 @@ class profileController extends Controller
     public function edit(Request $request){
         $this->validate($request,[
             'email'=>'email',
-            'password'=>'required|min:8',
             'gender'=>'not_in:Choose Gender',
             'mstatus'=>'not_in:Choose Your Relationship',
             ]);
@@ -54,10 +55,8 @@ class profileController extends Controller
         $filename = $request->file('image')->getClientOriginalName();
         $path = $request->file('image')->storeAs('public/images',$filename);
             }else{
-                $filename = '';
             }
         $user = Auth::user();
-        $user->password = bcrypt($request['password']);
         $user->username = $request['username'];
         $user->email = $request['email'];        
         $user->first_name = $request['firstname'];

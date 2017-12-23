@@ -749,7 +749,15 @@
 	<!-- Contact form JavaScript -->
 	<script src="{{asset('js/jqBootstrapValidation.js')}}"></script>
 	<script src="{{asset('js/contact_me.js')}}"></script>
-
+	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+	<script>
+	  var OneSignal = window.OneSignal || [];
+	  OneSignal.push(function() {
+		OneSignal.init({
+		  appId: "05dc8d4f-a223-4e24-bbf7-2f6ac149a5eb",
+		});
+	  });
+	</script>
 	<!-- Custom scripts for this template -->
 	<script src="{{asset('js/agency.min.js')}}"></script>
 

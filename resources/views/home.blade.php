@@ -47,19 +47,27 @@
 
 		<li class="list-group-item">
 			<div style="display:flex;border-bottom:1px solid gray">
-				<img height="100px" src="storage/images/{{$item->user->image}}" />
-				<h4>{{$item->user->username}}</h4>
+				<img height="100px" style="margin-bottom:20px" src="storage/images/{{$item->user->image}}" />
+				<h4 style="margin-left:30px;" >{{$item->user->username}}</h4>
 			</div>
 			<div class="thumbnail left">
-				<img style="max-height:300px" src="storage/images/{{$item->image}}">
+					@if ($item->image)
+					<img style="max-height:300px"  src = "storage/images/{{$item->image}}" >
+			   @else
+			   <img style="max-height:300px"  src = "storage/images/nocap.jpg" >
+							 
+					 @endif
 			</div>
 
 			<div class="caption">
-				<h5> {{$item->caption}} </h5>
+				<h3 style="text-align:center" > {{$item->caption}} </h3>
+                <p style="float:right"> {{$item->created_at}} </p>
 				<p>
-					<a href="#" class="btn btn-primary" role="button">
-						Button
+					<a href="/posts/{{$item->id}}/like" class="btn btn-primary" role="button">
+						LIKE <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+
 					</a>
+					{{--  <b>{{$item->likes->count()}}</b>  --}}
 				</p>
 
 			</div>
@@ -67,7 +75,8 @@
 
 	</ul>
 
-	@endforeach @endif
+	@endforeach 
+	@endif
 
 </div>
 </div>

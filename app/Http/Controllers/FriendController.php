@@ -52,7 +52,7 @@ class FriendController extends Controller
 
                     
                     Auth::user()->acceptfriendsRequest($user);
-                    return redirect()->route('profile.index',['username'=>$username])->with('info','friend request accepted');
+                    return redirect()->back()->with('info','friend request accepted');
                     
     }
     public function postDelete($username){
@@ -63,7 +63,7 @@ class FriendController extends Controller
      }    
      Auth::user()->deleteFriend($user);
 
-     return redirect()->back()->with('info','friend deleted you are no later friends');
+     return redirect()->route('home')->with('info','friend deleted you are no later friends');
 
     }
 }

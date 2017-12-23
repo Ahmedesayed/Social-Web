@@ -27,13 +27,12 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::check()){
-            $user_id = Auth::user()->id;
-            $user = User::find($user_id);
-            $mine_posts = $user->posts;
-            $friends = $user->friends();
-          //  dd($friends);
-           
-            return view('home')->with('posts',$mine_posts);
+          
+            $posts = posts::where(function($query){
+                return $query->where('user_id',Auth::user()->id)->orWhereIn('user_id',Auth::user()->friends()->pluck('id'));
+            })->orderBy('created_at','desc')->get();
+        
+            return view('home')->with('posts',$posts);
             }
         }
     
